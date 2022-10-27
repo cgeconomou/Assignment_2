@@ -1,0 +1,26 @@
+﻿
+@model Assignment_2.Models.Trainer
+
+<style>
+    body {
+        background-image: url('https://oneesports.azureedge.net/cdn-data/2021/05/CallOfDuty_Warzone_Graphic.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+<div>
+    <h2>Details</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item">ID: @Model.Id</li>
+        <li class="list-group-item">Name: @Model.Name</li>
+        <li class="list-group-item">LastName: @Model.LastName</li>
+        <li class="list-group-item">Email: @Model.Email</li>
+        <li class="list-group-item">Salary: @Model.Salary</li>
+
+
+    </ul>
+    <a class="btn btn-primary" href="/Trainer/Index">Back to Trainers</a>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Assignment_2.Models.Trainer>
+
+
+@*<style>
+    body {
+        background-image: url('../../media/formpart4g.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+
+    }
+
+
+</style>*@
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> @TempData["message"]
+    </div>
+}
+
+<h2>List Of Trainers</h2>
+<div>
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var trainer in Model)
+            {
+                <tr>
+                    <td>@trainer.Id</td>
+                    <td>@trainer.Name</td>
+                    <td>@trainer.LastName</td>
+                    <td>@trainer.Email</td>
+                    <td>@trainer.Salary</td>
+
+                    <td>
+                        <a class="btn btn-success" href="/Trainer/Details?id=@trainer.Id">Details</a>
+                        <a class="btn btn-primary" href="/Trainer/Edit?id=@trainer.Id">Edit</a>
+                        <a class="btn btn-danger" href="/Trainer/Delete?id=@trainer.Id">Delete</a>
+                       
+                        <form action="/Trainer/Delete" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@trainer.Id" />
+
+                        </form>
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+</p>
